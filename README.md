@@ -2,7 +2,7 @@
 
 This code is a copy from https://bitbucket.org/jvdschoot/home-assistant-sensor-plugwise-smile-p1/src/master/
 
-It is added to the plugwise repository so that all the working plugwise-related HA Core can be found in one place.
+It is added to the plugwise repository so that all the plugwise-related HA Core custom_components can be found in one place.
 
 # How to install?
 
