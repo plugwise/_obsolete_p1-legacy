@@ -18,7 +18,7 @@ Add this to your configuration.yaml file, under `sensor`:
 ```
 sensor #remove this line when already present, always remove this comment
   - platform: plugwise_p1_legacy
-    name: Plugwise P1-legacy
+    name: "Plugwise P1-legacy"
     host: x.x.x.x
     username: smile
     password: password
