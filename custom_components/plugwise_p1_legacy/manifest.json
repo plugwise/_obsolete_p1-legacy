@@ -1,0 +1,10 @@
+{
+  "domain": "plugwise_p1_legacy",
+  "name": "Plugwise P1_legacy",
+  "version": "0.0.1",
+  "documentation": "https://github.com/plugwise/p1_legacy/blob/main/README.md",
+  "dependencies": [],
+  "codeowners": ["@jvdschoot", "@bouwew"],
+  "requirements": [],
+  "iot_class": "local_polling"
+}
