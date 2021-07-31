@@ -51,11 +51,6 @@ class PlugWiseP1Api():
     def get_base_url(self):
         return 'http://{user}:{password}@{host}/'.format(user=self.user, password=self.password, host=self.host)
 
-    def get_locations(self):
-        response = self.session.get(self.get_base_url() + 'core/locations')
-        root = etree.fromstring(response.content)
-        return root
-
     def get_electricity_module(self):
         modules_response = self.session.get(self.get_base_url() + 'core/modules')
         modules_xml = etree.fromstring(modules_response.content)
@@ -154,13 +149,11 @@ class PlugwiseSmileData(object):
         self._host = host
         self._username = username
         self._password = password
-        self._locations = None
         self._api = PlugWiseP1Api(self._host, self._username, self._password)
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         """Update the data from the server."""
-        self._locations = self._api.get_locations()
         self._electricity_module = self._api.get_electricity_module()
         self._gas_module = self._api.get_gas_module()
 
