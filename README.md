@@ -35,3 +35,8 @@ sensor #remove this line when already present, always remove this comment
       - gas_consumed_interval
       - gas_consumed_cumulative
 ```
+
+# How to change the update interval?
+
+The default update interval is 30 seconds.
+You can change this by editing line 23 in `__init_.py`; change the number at the end of the line. Don't go lower than 10.
