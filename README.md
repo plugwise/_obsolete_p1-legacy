@@ -1,4 +1,4 @@
-# P1_legacy
+# P1-legacy
 
 This code is a copy from https://bitbucket.org/jvdschoot/home-assistant-sensor-plugwise-smile-p1/src/master/
 
