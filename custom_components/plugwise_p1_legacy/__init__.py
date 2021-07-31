@@ -2,26 +2,6 @@
 Support for reading energy data from PlugWise Smile P1 via IP.
 This code is meant for a Smile P1 with firmware 2.1.x.
 
-configuration.yaml
-
-sensor:
-  - platform: plugwise_p1_legacy
-    host: PLUGWISE_HOST/IP
-    username: PLUGWISE_USER
-    password: PLUGWISE_PASSWORD
-    resources:
-      - electricity_consumed_point
-      - electricity_consumed_offpeak_interval
-      - electricity_consumed_peak_interval
-      - electricity_consumed_offpeak_cumulative
-      - electricity_consumed_peak_cumulative
-      - electricity_produced_point
-      - electricity_produced_offpeak_interval
-      - electricity_produced_peak_interval
-      - electricity_produced_offpeak_cumulative
-      - electricity_produced_peak_cumulative
-      - gas_consumed_interval
-      - gas_consumed_cumulative  
 """
 
 import logging
