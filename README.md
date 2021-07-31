@@ -1,6 +1,6 @@
 # P1-legacy
 
-This code is based on https://bitbucket.org/jvdschoot/home-assistant-sensor-plugwise-smile-p1/src/master/
+This code is based on https://bitbucket.org/jvdschoot/home-assistant-sensor-plugwise-smile-p1/src/master/.
 It is added to the plugwise repository so that all the plugwise-related HA Core custom_components can be found in one place.
 
 This code is meant for a Smile P1 with firmware 2.1.x. For P1's with newer firmware please use `plugwise-beta`.
