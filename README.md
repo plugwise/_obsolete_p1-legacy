@@ -9,7 +9,7 @@ It is added to the plugwise repository so that all the plugwise-related HA Core 
 - Use [HACS](https://hacs.xyz)
 - Navigate to the `Integrations` page and use the three-dots icon on the top right to add a custom repository.
 - Use the link to this page as the URL and select 'Integrations' as the category.
-- Look for `Plugwise P1_legacy custom component` in `Integrations` and install it!
+- Look for `Plugwise P1-legacy custom component` in `Integrations` and install it!
 
 ## How to add the integration to HA Core
 
@@ -17,7 +17,7 @@ Add this to your configuration.yaml file, under `sensor`:
 ```
 sensor #remove this line when already present, always remove this comment
   - platform: plugwise_p1_legacy
-    name: Plugwise Smile
+    name: Plugwise P1-legacy
     host: x.x.x.x
     username: smile
     password: password
