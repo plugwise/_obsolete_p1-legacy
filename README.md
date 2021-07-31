@@ -18,10 +18,9 @@ Add this to your configuration.yaml file, under `sensor`:
 ```
 sensor #remove this line when already present, always remove this comment
   - platform: plugwise_p1_legacy
-    name: "Plugwise P1-legacy"
-    host: x.x.x.x
+    host: 10.10.10.1 #example
     username: smile
-    password: password
+    password: abcdefgh #the 8-letter Smile ID
     resources:
       - electricity_consumed_point
       - electricity_consumed_offpeak_interval
