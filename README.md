@@ -39,4 +39,5 @@ sensor #remove this line when already present, always remove this comment
 # How to change the update interval?
 
 The default update interval is 30 seconds.
-You can change this by editing line 23 in `__init_.py`; change the number at the end of the line. Don't go lower than 10.
+You can change this by editing line 23 in `__init_.py`; change the number at the end of the line. 
+Don't go below 10 seconds, as on most smartmeters the update interval is 10 seconds.
