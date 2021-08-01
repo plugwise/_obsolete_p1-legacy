@@ -1,3 +1,5 @@
+""" P1-legacy sensor module."""
+
 import logging
 from datetime import timedelta
 import voluptuous as vol
@@ -93,6 +95,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 class PlugWiseP1Api:
+    """ Plugwise P1 API class."""
     def __init__(self, host, user, password):
         self.session = requests.Session()
         self.host = host
