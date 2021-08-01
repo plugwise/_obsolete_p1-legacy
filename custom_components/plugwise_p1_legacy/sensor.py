@@ -24,37 +24,44 @@ SENSOR_TYPES = {
     ],
     "electricity_consumed_peak_interval": [
         "Electricity Consumed Peak Interval",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:flash",
     ],
     "electricity_consumed_offpeak_cumulative": [
         "Electricity Consumed Off Peak Cumulative",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:flash",
     ],
     "electricity_consumed_peak_cumulative": [
         "Electricity Consumed Peak Cumulative",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:flash",
     ],
     "electricity_produced_offpeak_interval": [
         "Electricity Produced Off Peak Interval",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:white-balance-sunny",
     ],
     "electricity_produced_peak_interval": [
         "Electricity Produced Peak Interval",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:white-balance-sunny",
     ],
     "electricity_produced_offpeak_cumulative": [
         "Electricity Produced Off Peak Cumulative",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:white-balance-sunny",
     ],
     "electricity_produced_peak_cumulative": [
         "Electricity Produced Peak Cumulative",
-        "energy" "Wh",
+        "energy",
+        "Wh",
         "mdi:white-balance-sunny",
     ],
     "net_electricity_cumulative": [
@@ -297,12 +304,19 @@ class PlugwiseSmileSensor(Entity):
     def __init__(self, data, sensor_type):
         """Initialize the sensor."""
         self.data = data
-        self.type = sensor_type
-        self._name = SENSOR_PREFIX + SENSOR_TYPES[self.type][0]
-        self._unit_of_measurement = SENSOR_TYPES[self.type][1]
-        self._icon = SENSOR_TYPES[self.type][2]
+        self.sr_type = sensor_type
+        self._name = SENSOR_PREFIX + SENSOR_TYPES[self.sr_type][0]
+        self._device_class = SENSOR_TYPES[self.sr_type][1]
+        self._unit_of_measurement = SENSOR_TYPES[self.sr_type][2]
+        self._icon = SENSOR_TYPES[self.sr_type][3]
         self._state = None
+
         self.update()
+
+    @property
+    def device_class(self):
+        """Return the device_class of the sensor."""
+        return self._device_class
 
     @property
     def name(self):
