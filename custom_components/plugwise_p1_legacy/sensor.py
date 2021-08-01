@@ -171,7 +171,7 @@ class SmileP1Sensor(Entity):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
 
-        LOOKUP = {
+        LOOK_UP = {
             "electricity_consumed_point": self.data.get_electricity_consumed_point(),
             "electricity_produced_point": self.data.get_electricity_produced_point(),
             "electricity_consumed_offpeak_interval": self.data.get_electricity_consumed_offpeak_interval(),
@@ -199,4 +199,4 @@ class SmileP1Sensor(Entity):
                 - self.data.get_electricity_produced_peak_cumulative()
             )
         else:
-            self._state = LOOKUP.get(self.sr_type)
+            self._state = LOOK_UP.get(self.sr_type)
