@@ -16,7 +16,7 @@ _LOGGER = logging.getLogger(__name__)
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
-SENSOR_PREFIX = "PSP1 "
+SENSOR_PREFIX = "P1 "
 SENSOR_TYPES = {
     "electricity_consumed_offpeak_interval": [
         "Electricity Consumed Off Peak Interval",
