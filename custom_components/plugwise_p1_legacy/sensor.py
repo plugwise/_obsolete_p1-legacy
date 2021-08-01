@@ -36,7 +36,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         data = SmileP1Data(host, username, password)
     except RunTimeError:
         _LOGGER.error("Unable to connect fetch data from Plugwise Smile %s", host)
-        return False
 
     entities = []
 
