@@ -18,18 +18,18 @@ MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
 SENSOR_PREFIX = 'PSP1 '
 SENSOR_TYPES = {
-    'electricity_consumed_point': ['Current Consumed Power', 'W', 'mdi:flash'],
-    'electricity_consumed_offpeak_interval': ['Interval Off Peak Consumed Power', 'Wh', 'mdi:flash'],
-    'electricity_consumed_peak_interval': ['Interval Peak Consumed Power', 'Wh', 'mdi:flash'],
-    'electricity_consumed_offpeak_cumulative': ['Cumulative Off Peak Consumed Power', 'Wh', 'mdi:flash'],
-    'electricity_consumed_peak_cumulative': ['Cumulative Peak Consumed Power', 'Wh', 'mdi:flash'],
-    'electricity_produced_point': ['Current Produced Power', 'W', 'mdi:white-balance-sunny'],
-    'electricity_produced_offpeak_interval': ['Interval Off Peak Produced Power', 'Wh', 'mdi:white-balance-sunny'],
-    'electricity_produced_peak_interval': ['Interval Peak Produced Power', 'Wh', 'mdi:white-balance-sunny'],
-    'electricity_produced_offpeak_cumulative': ['Cumulative Off Peak Produced Power', 'Wh', 'mdi:white-balance-sunny'],
-    'electricity_produced_peak_cumulative': ['Cumulative Peak Produced Power', 'Wh', 'mdi:white-balance-sunny'],
-    'gas_consumed_interval': ['Interval Consumed Gas', 'm3', 'mdi:gas-cylinder'],
-    'gas_consumed_cumulative': ['Cumulative Consumed Gas', 'm3', 'mdi:gas-cylinder'],
+    'electricity_consumed_offpeak_interval': ['Electricity Consumed Off Peak Interval', 'energy', 'Wh', 'mdi:flash'],
+    'electricity_consumed_peak_interval': ['Electricity Consumed Peak Interval', 'energy' 'Wh', 'mdi:flash'],
+    'electricity_consumed_offpeak_cumulative': ['Electricity Consumed Off Peak Cumulative', 'energy' 'Wh', 'mdi:flash'],
+    'electricity_consumed_peak_cumulative': ['Electricity Consumed Peak Cumulative', 'energy' 'Wh', 'mdi:flash'],
+    'electricity_produced_offpeak_interval': ['Electricity Produced Off Peak Interval', 'energy' 'Wh', 'mdi:white-balance-sunny'],
+    'electricity_produced_peak_interval': ['Electricity Produced Peak Interval', 'energy' 'Wh', 'mdi:white-balance-sunny'],
+    'electricity_produced_offpeak_cumulative': ['Electricity Produced Off Peak Cumulative', 'energy' 'Wh', 'mdi:white-balance-sunny'],
+    'electricity_produced_peak_cumulative': ['Electricity Produced Peak Cumulative', 'energy' 'Wh', 'mdi:white-balance-sunny'],
+    'net_electricity_cumulative': ['Net Electricity Cumulative', 'power', 'W', 'mdi:flash'],
+    'net_electricity_point': ['Net Electricity Point', 'power', 'W', 'mdi:flash'],
+    'gas_consumed_interval': ['Gas Consumed Interval', None, 'm3', 'mdi:gas-cylinder'],
+    'gas_consumed_cumulative': ['Gas Consumed Cumulative', None, 'm3', 'mdi:gas-cylinder'],
 }
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
@@ -238,20 +238,14 @@ class PlugwiseSmileSensor(Entity):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
       
-        if self.type == 'electricity_consumed_point':
-            self._state = self.data.get_electricity_consumed_point()
-        elif self.type == 'electricity_consumed_offpeak_interval':
+        if self.type == 'electricity_consumed_offpeak_interval':
             self._state = self.data.get_electricity_consumed_offpeak_interval()
         elif self.type == 'electricity_consumed_peak_interval':
             self._state = self.data.get_electricity_consumed_peak_interval()
-        elif self.type == 'electricity_consumed_offpeak_interval':
-            self._state = self.data.get_electricity_consumed_offpeak_interval()
         elif self.type == 'electricity_consumed_offpeak_cumulative':
             self._state = self.data.get_electricity_consumed_offpeak_cumulative()
         elif self.type == 'electricity_consumed_peak_cumulative':
             self._state = self.data.get_electricity_consumed_peak_cumulative()
-        elif self.type == 'electricity_produced_point':
-            self._state = self.data.get_electricity_produced_point()
         elif self.type == 'electricity_produced_offpeak_interval':
             self._state = self.data.get_electricity_produced_offpeak_interval()
         elif self.type == 'electricity_produced_peak_interval':
@@ -264,3 +258,15 @@ class PlugwiseSmileSensor(Entity):
             self._state = self.data.get_gas_consumed_interval()
         elif self.type == 'gas_consumed_cumulative':
             self._state = self.data.get_gas_consumed_cumulative()
+        elif self.type == 'net_electricity_point':
+            self._state = (
+                self.data.get_electricity_consumed_point() 
+                - self.data.get_electricity_produced_point()
+            )
+        elif self.type == 'net_electricity_cumulative':
+            self._state = (
+                self.data.get_electricity_consumed_offpeak_cumulative() 
+                + self.data.get_electricity_consumed_peak_cumulative() 
+                - self.data.get_electricity_produced_offpeak_cumulative() 
+                - self.data.get_electricity_produced_peak_cumulative()
+            )
