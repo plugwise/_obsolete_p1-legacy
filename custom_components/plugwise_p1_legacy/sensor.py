@@ -116,9 +116,7 @@ class PlugWiseP1Api:
         self.password = password
 
     def get_base_url(self):
-        return "http://{user}:{password}@{host}/".format(
-            user=self.user, password=self.password, host=self.host
-        )
+        return f"http://{self.user}:{self.password}@{self.host}/"
 
     def get_electricity_module(self):
         modules_response = self.session.get(self.get_base_url() + "core/modules")
@@ -127,8 +125,7 @@ class PlugWiseP1Api:
             "//modules/module[count(./services/electricity_interval_meter)>0]/@id"
         )[0]
         module_response = self.session.get(
-            self.get_base_url()
-            + "core/modules;id={module_id}".format(module_id=module_id)
+            self.get_base_url() + f"core/modules;id={module_id}"
         )
         module_xml = etree.fromstring(module_response.content)
         return module_xml
@@ -140,8 +137,7 @@ class PlugWiseP1Api:
             "//modules/module[count(./services/gas_interval_meter)>0]/@id"
         )[0]
         module_response = self.session.get(
-            self.get_base_url()
-            + "core/modules;id={module_id}".format(module_id=module_id)
+            self.get_base_url() + f"core/modules;id={module_id}"
         )
         module_xml = etree.fromstring(module_response.content)
         return module_xml
