@@ -1,5 +1,7 @@
 """ P1-legacy constants."""
 
+from datetime import timedelta
+
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
 SENSOR_PREFIX = "P1 "

@@ -1,7 +1,6 @@
 """ P1-legacy sensor module."""
 
 import logging
-from datetime import timedelta
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
