@@ -3,8 +3,6 @@
 import logging
 from datetime import timedelta
 import voluptuous as vol
-import requests
-from lxml import etree
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 import homeassistant.helpers.config_validation as cv
