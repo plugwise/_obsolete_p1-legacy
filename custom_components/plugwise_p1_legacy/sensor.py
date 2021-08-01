@@ -18,8 +18,18 @@ MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
 SENSOR_PREFIX = "P1 "
 SENSOR_TYPES = {
-    'electricity_consumed_point': ['Electricity Consumed Point', 'power', 'W', 'mdi:flash'],
-    'electricity_produced_point': ['Electricity Produced Point', 'power', 'W', 'mdi:flash'],
+    "electricity_consumed_point": [
+        "Electricity Consumed Point",
+        "power",
+        "W",
+        "mdi:flash",
+    ],
+    "electricity_produced_point": [
+        "Electricity Produced Point",
+        "power",
+        "W",
+        "mdi:flash",
+    ],
     "electricity_consumed_offpeak_interval": [
         "Electricity Consumed Off Peak Interval",
         "energy",
@@ -98,6 +108,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 class PlugWiseP1Api:
     """ Plugwise P1 API class."""
+
     def __init__(self, host, user, password):
         self.session = requests.Session()
         self.host = host
@@ -349,9 +360,9 @@ class PlugwiseSmileSensor(Entity):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
 
-        if self.sr_type == 'electricity_consumed_point':
+        if self.sr_type == "electricity_consumed_point":
             self._state = self.data.get_electricity_consumed_point()
-        if self.sr_type == 'electricity_produced_point':
+        if self.sr_type == "electricity_produced_point":
             self._state = self.data.get_electricity_produced_point()
         if self.sr_type == "electricity_consumed_offpeak_interval":
             self._state = self.data.get_electricity_consumed_offpeak_interval()
