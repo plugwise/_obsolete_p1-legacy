@@ -1,6 +1,6 @@
 """ API for legacy Smile P1."""
 
-class PlugWiseP1Api:
+class P1_Api:
     """ Plugwise P1 API class."""
 
     def __init__(self, host, user, password):

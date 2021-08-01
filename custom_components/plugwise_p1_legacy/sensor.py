@@ -12,7 +12,7 @@ from homeassistant.const import CONF_HOST, CONF_USERNAME, CONF_PASSWORD, CONF_RE
 from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
 
-from .api import PlugWiseP1Api
+from .api import P1_Api
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -141,7 +141,7 @@ class PlugwiseSmileData(object):
         self._host = host
         self._username = username
         self._password = password
-        self._api = PlugWiseP1Api(self._host, self._username, self._password)
+        self._api = P1_Api(self._host, self._username, self._password)
         self._electricity_module = None
         self._gas_module = None
 
