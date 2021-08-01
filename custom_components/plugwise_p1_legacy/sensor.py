@@ -33,7 +33,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     password = config.get(CONF_PASSWORD)
 
     try:
-        data = PlugwiseSmileData(host, username, password)
+        data = SmileP1Data(host, username, password)
     except RunTimeError:
         _LOGGER.error("Unable to connect fetch data from Plugwise Smile %s", host)
         return False
@@ -46,13 +46,13 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         if sensor_type not in SENSOR_TYPES:
             SENSOR_TYPES[sensor_type] = [sensor_type.title(), "", "mdi:flash"]
 
-        entities.append(PlugwiseSmileSensor(data, sensor_type))
+        entities.append(SmileP1Sensor(data, sensor_type))
 
     add_entities(entities)
 
 
 # pylint: disable=abstract-method
-class PlugwiseSmileData(object):
+class SmileP1Data:
     """Representation of a Plugwise Wise."""
 
     def __init__(self, host, username, password):
@@ -123,7 +123,7 @@ class PlugwiseSmileData(object):
         return self._api.get_gas_consumed_cumulative(self._gas_module)
 
 
-class PlugwiseSmileSensor(Entity):
+class SmileP1Sensor(Entity):
     """Representation of a Plugwise Smile sensor."""
 
     def __init__(self, data, sensor_type):
