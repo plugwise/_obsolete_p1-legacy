@@ -32,6 +32,8 @@ sensor #remove this line when already present, always remove this comment
       - electricity_produced_peak_interval
       - electricity_produced_offpeak_cumulative
       - electricity_produced_peak_cumulative
+      - net_electricity_point
+      - net_electricity_cumulative
       - gas_consumed_interval
       - gas_consumed_cumulative
 ```
