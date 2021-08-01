@@ -337,6 +337,11 @@ class PlugwiseSmileSensor(Entity):
         return self._device_class
 
     @property
+    def entity_registry_enabled_default(self):
+        """Return if the entity should be enabled when first added to the entity registry."""
+        return True
+
+    @property
     def name(self):
         """Return the name of the sensor."""
         return self._name
