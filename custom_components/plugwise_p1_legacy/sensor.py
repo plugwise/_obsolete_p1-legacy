@@ -341,14 +341,6 @@ class PlugwiseSmileSensor(Entity):
         """Return the unit of measurement of this entity, if any."""
         return self._unit_of_measurement
 
-    def get_power(self, power_value):
-        pvSplit = power_value.split()
-        value = float(pvSplit[0])
-        if pvSplit[1] == "kW":
-            return value * 1000
-        else:
-            return value
-
     def update(self):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
