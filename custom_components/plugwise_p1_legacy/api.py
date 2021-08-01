@@ -1,5 +1,6 @@
 """ API for legacy Smile P1."""
 
+
 class P1_Api:
     """ Plugwise P1 API class."""
 
