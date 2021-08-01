@@ -11,6 +11,7 @@ from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
 
 from .api import SmileP1Api
+from .constants import MIN_TIME_BETWEEN_UPDATES, SENSOR_PREFIX, SENSOR_TYPES
 
 _LOGGER = logging.getLogger(__name__)
 
