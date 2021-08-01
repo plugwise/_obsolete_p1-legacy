@@ -3,6 +3,7 @@
 import requests
 from lxml import etree
 
+
 class SmileP1Api:
     """ Plugwise P1 API class."""
 
