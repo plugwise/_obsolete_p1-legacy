@@ -241,6 +241,8 @@ class PlugwiseSmileData(object):
         self._username = username
         self._password = password
         self._api = PlugWiseP1Api(self._host, self._username, self._password)
+        self._electricity_module = None
+        self._gas_module = None
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
