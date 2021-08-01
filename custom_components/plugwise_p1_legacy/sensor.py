@@ -171,39 +171,32 @@ class SmileP1Sensor(Entity):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
 
-        if self.sr_type == "electricity_consumed_point":
-            self._state = self.data.get_electricity_consumed_point()
-        if self.sr_type == "electricity_produced_point":
-            self._state = self.data.get_electricity_produced_point()
-        if self.sr_type == "electricity_consumed_offpeak_interval":
-            self._state = self.data.get_electricity_consumed_offpeak_interval()
-        if self.sr_type == "electricity_consumed_peak_interval":
-            self._state = self.data.get_electricity_consumed_peak_interval()
-        if self.sr_type == "electricity_consumed_offpeak_cumulative":
-            self._state = self.data.get_electricity_consumed_offpeak_cumulative()
-        if self.sr_type == "electricity_consumed_peak_cumulative":
-            self._state = self.data.get_electricity_consumed_peak_cumulative()
-        if self.sr_type == "electricity_produced_offpeak_interval":
-            self._state = self.data.get_electricity_produced_offpeak_interval()
-        if self.sr_type == "electricity_produced_peak_interval":
-            self._state = self.data.get_electricity_produced_peak_interval()
-        if self.sr_type == "electricity_produced_offpeak_cumulative":
-            self._state = self.data.get_electricity_produced_offpeak_cumulative()
-        if self.sr_type == "electricity_produced_peak_cumulative":
-            self._state = self.data.get_electricity_produced_peak_cumulative()
-        if self.sr_type == "gas_consumed_interval":
-            self._state = self.data.get_gas_consumed_interval()
-        if self.sr_type == "gas_consumed_cumulative":
-            self._state = self.data.get_gas_consumed_cumulative()
+        _LOOKUP = {
+            "electricity_consumed_point": self.data.get_electricity_consumed_point(),
+            "electricity_produced_point": self.data.get_electricity_produced_point(),
+            "electricity_consumed_offpeak_interval": self.data.get_electricity_consumed_offpeak_interval(),
+            "electricity_consumed_peak_interval": self.data.get_electricity_consumed_peak_interval(),
+            "electricity_consumed_offpeak_cumulative": self.data.get_electricity_consumed_offpeak_cumulative(),
+            "electricity_consumed_peak_cumulative": self.data.get_electricity_consumed_peak_cumulative(),
+            "electricity_produced_offpeak_interval": self.data.get_electricity_produced_offpeak_interval(),
+            "electricity_produced_peak_interval": self.data.get_electricity_produced_peak_interval(),
+            "electricity_produced_offpeak_cumulative": self.data.get_electricity_produced_offpeak_cumulative(),
+            "electricity_produced_peak_cumulative": self.data.get_electricity_produced_peak_cumulative(),
+            "gas_consumed_interval": self.data.get_gas_consumed_interval(),
+            "gas_consumed_cumulative": self.data.get_gas_consumed_cumulative(),
+        }
+
         if self.sr_type == "net_electricity_point":
             self._state = (
                 self.data.get_electricity_consumed_point()
                 - self.data.get_electricity_produced_point()
             )
-        if self.sr_type == "net_electricity_cumulative":
+        elif self.sr_type == "net_electricity_cumulative":
             self._state = (
                 self.data.get_electricity_consumed_offpeak_cumulative()
                 + self.data.get_electricity_consumed_peak_cumulative()
                 - self.data.get_electricity_produced_offpeak_cumulative()
                 - self.data.get_electricity_produced_peak_cumulative()
             )
+        else:
+            self._state = _LOOKUP.get(self.sr_type)
