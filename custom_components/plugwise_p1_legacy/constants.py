@@ -21,7 +21,7 @@ SENSOR_TYPES = {
         "Electricity Produced Point",
         "power",
         "measurement",
-        None,        
+        None,
         "W",
         "mdi:flash",
     ],
@@ -103,7 +103,7 @@ SENSOR_TYPES = {
         "measurement",
         None,
         "W",
-        "mdi:flash"
+        "mdi:flash",
     ],
     "gas_consumed_interval": [
         "Gas Consumed Interval",
@@ -111,7 +111,7 @@ SENSOR_TYPES = {
         "measurement",
         None,
         "m3",
-        "mdi:gas-cylinder"
+        "mdi:gas-cylinder",
     ],
     "gas_consumed_cumulative": [
         "Gas Consumed Cumulative",

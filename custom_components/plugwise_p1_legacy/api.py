@@ -5,7 +5,7 @@ from lxml import etree
 
 
 class SmileP1Api:
-    """ Plugwise P1 API class."""
+    """Plugwise P1 API class."""
 
     def __init__(self, host, user, password):
         self.session = requests.Session()
