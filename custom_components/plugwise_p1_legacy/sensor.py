@@ -131,12 +131,11 @@ class SmileP1Sensor(SensorEntity):
         self.sr_type = sensor_type
         self._name = SENSOR_PREFIX + SENSOR_TYPES[self.sr_type][0]
         self._device_class = SENSOR_TYPES[self.sr_type][1]
-        self._unit_of_measurement = SENSOR_TYPES[self.sr_type][2]
-        self._icon = SENSOR_TYPES[self.sr_type][3]
+        self._attr_state_class = SENSOR_TYPES[self.sr_type][2]
+        self._attr_last_reset = SENSOR_TYPES[self.sr_type][3]
+        self._unit_of_measurement = SENSOR_TYPES[self.sr_type][4]
+        self._icon = SENSOR_TYPES[self.sr_type][5]
         self._state = None
-
-        self._attr_state_class = None
-        self._attr_last_reset = None
 
         self.update()
 
