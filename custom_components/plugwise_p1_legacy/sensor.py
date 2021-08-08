@@ -7,7 +7,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import CONF_HOST, CONF_USERNAME, CONF_PASSWORD, CONF_RESOURCES
 from homeassistant.util import Throttle
-from homeassistant.helpers.entity import Entity
+from homeassistant.components.sensor import SensorEntity
 
 from .api import SmileP1Api
 from .constants import MIN_TIME_BETWEEN_UPDATES, SENSOR_PREFIX, SENSOR_TYPES
@@ -122,7 +122,7 @@ class SmileP1Data:
         return self._api.get_gas_consumed_cumulative(self._gas_module)
 
 
-class SmileP1Sensor(Entity):
+class SmileP1Sensor(SensorEntity):
     """Representation of a Plugwise Smile sensor."""
 
     def __init__(self, data, sensor_type):
@@ -134,6 +134,9 @@ class SmileP1Sensor(Entity):
         self._unit_of_measurement = SENSOR_TYPES[self.sr_type][2]
         self._icon = SENSOR_TYPES[self.sr_type][3]
         self._state = None
+
+        self._attr_state_class = None
+        self._attr_last_reset = None
 
         self.update()
 
