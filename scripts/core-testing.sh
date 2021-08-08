@@ -82,11 +82,11 @@ pip install -q flake8
 echo ""
 echo "Checking manifest for current python-plugwise to install"
 echo ""
-pip install -q --disable-pip-version-check $(grep require ../custom_components/plugwise/manifest.json | cut -f 4 -d '"')
+pip install -q --disable-pip-version-check $(grep require ../custom_components/plugwise_p1_legacy/manifest.json | cut -f 4 -d '"')
 echo ""
 echo "Test commencing ..."
 echo ""
-echo "... flake8-ing ..." && flake8 homeassistant/components/plugwise/*py && echo "..." && flake8 tests/components/plugwise_p1_legacy/*py && echo "... pylint-ing ..." && pylint homeassistant/components/plugwise_p1_legacy/*py && echo "... black-ing ..." && black homeassistant/components/plugwise_p1_legacy/*py
+echo "... flake8-ing ..." && flake8 homeassistant/components/plugwise_p1_legacy/*py && echo "..." && flake8 tests/components/plugwise_p1_legacy/*py && echo "... pylint-ing ..." && pylint homeassistant/components/plugwise_p1_legacy/*py && echo "... black-ing ..." && black homeassistant/components/plugwise_p1_legacy/*py
 echo ""
 echo "Copy back modified files ..."
 echo ""
