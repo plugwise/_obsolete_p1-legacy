@@ -82,7 +82,9 @@ pip install -q flake8
 echo ""
 echo "Test commencing ..."
 echo ""
-echo "... flake8-ing ..." && flake8 homeassistant/components/plugwise_p1_legacy/*py && echo "..." && echo "... pylint-ing ..." && pylint homeassistant/components/plugwise_p1_legacy/*py && echo "... black-ing ..." && black homeassistant/components/plugwise_p1_legacy/*py
+echo "... flake8-ing ..." && flake8 homeassistant/components/plugwise_p1_legacy/*py
+echo "... pylint-ing ..." && pylint homeassistant/components/plugwise_p1_legacy/*py
+echo "... black-ing ..." && black homeassistant/components/plugwise_p1_legacy/*py
 echo ""
 echo "Copy back modified files ..."
 echo ""
