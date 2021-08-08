@@ -1,4 +1,4 @@
-""" P1-legacy constants."""
+"""P1-legacy constants."""
 
 import datetime as dt
 

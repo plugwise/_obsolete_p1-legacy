@@ -1,4 +1,4 @@
-""" P1-legacy sensor module."""
+"""P1-legacy sensor module."""
 
 import logging
 import voluptuous as vol
@@ -27,7 +27,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
-    """Setup the Plugwise Smile sensors."""
+    """Setting up the Plugwise Smile sensors."""
     host = config.get(CONF_HOST)
     username = config.get(CONF_USERNAME)
     password = config.get(CONF_PASSWORD)

@@ -1,4 +1,4 @@
-""" API for legacy Smile P1."""
+"""API for legacy Smile P1."""
 
 import requests
 from lxml import etree
