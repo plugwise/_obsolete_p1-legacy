@@ -46,7 +46,7 @@ SENSOR_TYPES = {
         "energy",
         "measurement",
         LR_TIME_0,
-        "Wh",
+        "kWh",
         "mdi:flash",
     ],
     "electricity_consumed_peak_cumulative": [
@@ -54,7 +54,7 @@ SENSOR_TYPES = {
         "energy",
         "measurement",
         LR_TIME_0,
-        "Wh",
+        "kWh",
         "mdi:flash",
     ],
     "electricity_produced_offpeak_interval": [
@@ -78,7 +78,7 @@ SENSOR_TYPES = {
         "energy",
         "measurement",
         LR_TIME_0,
-        "Wh",
+        "kWh",
         "mdi:white-balance-sunny",
     ],
     "electricity_produced_peak_cumulative": [
@@ -86,7 +86,7 @@ SENSOR_TYPES = {
         "energy",
         "measurement",
         LR_TIME_0,
-        "Wh",
+        "kWh",
         "mdi:white-balance-sunny",
     ],
     "net_electricity_cumulative": [
@@ -94,7 +94,7 @@ SENSOR_TYPES = {
         "power",
         "measurement",
         LR_TIME_0,
-        "W",
+        "kWh",
         "mdi:flash",
     ],
     "net_electricity_point": [
