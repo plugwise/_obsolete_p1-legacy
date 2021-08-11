@@ -91,7 +91,7 @@ SENSOR_TYPES = {
     ],
     "net_electricity_cumulative": [
         "Net Electricity Cumulative",
-        "power",
+        "energy",
         "measurement",
         LR_TIME_0,
         "kWh",
