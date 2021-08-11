@@ -62,13 +62,13 @@ class SmileP1Api:
         value = electricity_module.xpath(
             '//module/services/electricity_cumulative_meter/measurement[@directionality="consumed" and @tariff_indicator="nl_offpeak"]/text()'
         )[0]
-        return float(value)/1000
+        return float(value) / 1000
 
     def get_electricity_consumed_peak_cumulative(self, electricity_module):
         value = electricity_module.xpath(
             '//module/services/electricity_cumulative_meter/measurement[@directionality="consumed" and @tariff_indicator="nl_peak"]/text()'
         )[0]
-        return float(value)/1000
+        return float(value) / 1000
 
     def get_electricity_produced_point(self, electricity_module):
         value = electricity_module.xpath(
@@ -92,13 +92,13 @@ class SmileP1Api:
         value = electricity_module.xpath(
             '//module/services/electricity_cumulative_meter/measurement[@directionality="produced" and @tariff_indicator="nl_offpeak"]/text()'
         )[0]
-        return float(value)/1000
+        return float(value) / 1000
 
     def get_electricity_produced_peak_cumulative(self, electricity_module):
         value = electricity_module.xpath(
             '//module/services/electricity_cumulative_meter/measurement[@directionality="produced" and @tariff_indicator="nl_peak"]/text()'
         )[0]
-        return float(value)/1000
+        return float(value) / 1000
 
     def get_gas_consumed_interval(self, gas_module):
         value = gas_module.xpath(
