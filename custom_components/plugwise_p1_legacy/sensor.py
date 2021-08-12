@@ -207,4 +207,3 @@ class SmileP1Sensor(SensorEntity):
                 self._attr_last_reset = temp[1]
             else:
                 self._state = temp
-

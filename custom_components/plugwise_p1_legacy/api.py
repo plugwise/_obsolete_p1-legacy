@@ -53,8 +53,10 @@ class SmileP1Api:
             '//module/services/electricity_interval_meter/measurement[@directionality="consumed" and @tariff_indicator="nl_offpeak"]/text()'
         )[0]
         log_date = None
-        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
-        log_date = parse(log_date.get('log_date'))
+        log_date = electricity_module.xpath(
+            "//module/services/electricity_interval_meter/measurement"
+        )[0]
+        log_date = parse(log_date.get("log_date"))
         log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
         return [float(value), log_date]
 
@@ -63,8 +65,10 @@ class SmileP1Api:
             '//module/services/electricity_interval_meter/measurement[@directionality="consumed" and @tariff_indicator="nl_peak"]/text()'
         )[0]
         log_date = None
-        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
-        log_date = parse(log_date.get('log_date'))
+        log_date = electricity_module.xpath(
+            "//module/services/electricity_interval_meter/measurement"
+        )[0]
+        log_date = parse(log_date.get("log_date"))
         log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
         return [float(value), log_date]
 
@@ -91,8 +95,10 @@ class SmileP1Api:
             '//module/services/electricity_interval_meter/measurement[@directionality="produced" and @tariff_indicator="nl_offpeak"]/text()'
         )[0]
         log_date = None
-        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
-        log_date = parse(log_date.get('log_date'))
+        log_date = electricity_module.xpath(
+            "//module/services/electricity_interval_meter/measurement"
+        )[0]
+        log_date = parse(log_date.get("log_date"))
         log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
         return [float(value), log_date]
 
@@ -101,8 +107,10 @@ class SmileP1Api:
             '//module/services/electricity_interval_meter/measurement[@directionality="produced" and @tariff_indicator="nl_peak"]/text()'
         )[0]
         log_date = None
-        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
-        log_date = parse(log_date.get('log_date'))
+        log_date = electricity_module.xpath(
+            "//module/services/electricity_interval_meter/measurement"
+        )[0]
+        log_date = parse(log_date.get("log_date"))
         log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
         return [float(value), log_date]
 
@@ -123,8 +131,10 @@ class SmileP1Api:
             '//module/services/gas_interval_meter/measurement[@directionality="consumed"]/text()'
         )[0]
         log_date = None
-        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
-        log_date = parse(log_date.get('log_date'))
+        log_date = electricity_module.xpath(
+            "//module/services/electricity_interval_meter/measurement"
+        )[0]
+        log_date = parse(log_date.get("log_date"))
         log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
         return [float(value), log_date]
 
