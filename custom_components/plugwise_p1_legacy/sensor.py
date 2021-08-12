@@ -201,4 +201,10 @@ class SmileP1Sensor(SensorEntity):
                 - self.data.get_electricity_produced_peak_cumulative()
             )
         else:
-            self._state = look_up.get(self.sr_type)
+            temp = look_up.get(self.sr_type)
+            if isinstance(temp, list):
+                self._state = temp[0]
+                self._attr_last_reset = temp[1]
+            else:
+                self._state = temp
+
