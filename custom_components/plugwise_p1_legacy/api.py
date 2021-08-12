@@ -1,6 +1,8 @@
 """API for legacy Smile P1."""
 
 import requests
+from dateutil import tz
+from dateutil.parser import parse
 from lxml import etree
 
 
@@ -50,13 +52,21 @@ class SmileP1Api:
         value = electricity_module.xpath(
             '//module/services/electricity_interval_meter/measurement[@directionality="consumed" and @tariff_indicator="nl_offpeak"]/text()'
         )[0]
-        return float(value)
+        log_date = None
+        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
+        log_date = parse(log_date.get('log_date'))
+        log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
+        return [float(value), log_date]
 
     def get_electricity_consumed_peak_interval(self, electricity_module):
         value = electricity_module.xpath(
             '//module/services/electricity_interval_meter/measurement[@directionality="consumed" and @tariff_indicator="nl_peak"]/text()'
         )[0]
-        return float(value)
+        log_date = None
+        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
+        log_date = parse(log_date.get('log_date'))
+        log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
+        return [float(value), log_date]
 
     def get_electricity_consumed_offpeak_cumulative(self, electricity_module):
         value = electricity_module.xpath(
@@ -80,13 +90,21 @@ class SmileP1Api:
         value = electricity_module.xpath(
             '//module/services/electricity_interval_meter/measurement[@directionality="produced" and @tariff_indicator="nl_offpeak"]/text()'
         )[0]
-        return float(value)
+        log_date = None
+        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
+        log_date = parse(log_date.get('log_date'))
+        log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
+        return [float(value), log_date]
 
     def get_electricity_produced_peak_interval(self, electricity_module):
         value = electricity_module.xpath(
             '//module/services/electricity_interval_meter/measurement[@directionality="produced" and @tariff_indicator="nl_peak"]/text()'
         )[0]
-        return float(value)
+        log_date = None
+        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
+        log_date = parse(log_date.get('log_date'))
+        log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
+        return [float(value), log_date]
 
     def get_electricity_produced_offpeak_cumulative(self, electricity_module):
         value = electricity_module.xpath(
@@ -104,7 +122,11 @@ class SmileP1Api:
         value = gas_module.xpath(
             '//module/services/gas_interval_meter/measurement[@directionality="consumed"]/text()'
         )[0]
-        return float(value)
+        log_date = None
+        log_date = electricity_module.xpath('//module/services/electricity_interval_meter/measurement')[0]
+        log_date = parse(log_date.get('log_date'))
+        log_date = log_date.astimezone(tz.gettz("UTC")).replace(tzinfo=None)
+        return [float(value), log_date]
 
     def get_gas_consumed_cumulative(self, gas_module):
         value = gas_module.xpath(
