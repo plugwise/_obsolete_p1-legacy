@@ -36,6 +36,7 @@ sensor #remove this line when already present, always remove this comment
       - net_electricity_cumulative
       - gas_consumed_interval
       - gas_consumed_cumulative
+    scan_interval: 10 ### optional, see below ###
 ```
 
 # How to change the update interval?
@@ -43,3 +44,4 @@ sensor #remove this line when already present, always remove this comment
 The default update interval is 30 seconds.
 You can change this by editing line 23 in `__init_.py`; change the number at the end of the line. 
 Don't go below 10 seconds, as on most smartmeters the update interval is 10 seconds.
+Also, add the optional scan_interval_line, see above.
